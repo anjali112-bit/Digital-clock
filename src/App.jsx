@@ -1,24 +1,26 @@
-import React,{useState} from 'react';
+import React, { useState }  from "react";
 
 
-
-    
 const App=()=>{
+    const [txt,setTxt] = useState("")
+    const [fullTxt,setFullTxt] =useState();
+    const inputEvent=(event)=>{
+      
+      setTxt(event.target.value);
 
-    let time = new Date().toLocaleTimeString();
-     
-    const[cTime,setCtime]=useState(time);
-    const change =()=>{
-        time = new Date().toLocaleTimeString();
-        setCtime(time);
-    };
-    setInterval(change,1000);
-    return(
-        <>
-          <h1>{cTime}</h1>
-        </>
+    }
+    const onSubmit=()=>{
+     setFullTxt(txt);
+    }
+    return (
+    <>
+       <div>
+           <h1>Hello {fullTxt}</h1>
+           <input type='text' placeholder="Enter Your Name" onChange={inputEvent} value={txt}/>
+           <button onClick={onSubmit}>Click Me</button>
 
+       </div> 
+    </>
     );
-};
-
+}
 export default App;
